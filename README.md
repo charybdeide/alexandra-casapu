@@ -4,6 +4,8 @@
 
 ## *Context*: 
 I'm assuming I've joined the team and was asked to test the app to find possible problems with big business impact.
+Product website: http://www.monefy.me/
+
 
 ## *My mission*: Test Monefy as a QA Engineer
 
@@ -150,12 +152,12 @@ There is a calculator embedded when inputting numbers - does it work correctly?
           - :two: add many many categories - how do they show up on the main screen?
       - edit existing 
         - :two: edit the name - same ideas of input as for creating a new category
-        - change the associated icon - it seems like it's a paid-version only feature
-                - :two: can I somehow change the icon with the free version?
-                - :two: is it easy to choose a new icon?
-                - :three: is there a relevant selection of symbols?
-                - :two: does the change propagate throughout the app? on all synced devices?
-                - :three: change the icon multiple times for the same category
+        - change the associated icon - it seems like it's a paid-version only feature               
+            - :two: can I somehow change the icon with the free version?
+            - :two: is it easy to choose a new icon?
+            - :three: is there a relevant selection of symbols?
+            - :two: does the change propagate throughout the app? on all synced devices?
+            - :three: change the icon multiple times for the same category
       - delete existing
         - :two: delete - see if the change propagates in other places, like the front screen, the Balance screen, and on other synced devices
         - :two: can I undo?
