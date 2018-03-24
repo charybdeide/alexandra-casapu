@@ -128,10 +128,10 @@ There is a calculator embedded when inputting numbers - does it work correctly?
         - are the from/to accounts intuitively marked?                                                                    
         - is it possible/easy to correct mistakes - e.g. edit the amount/accounts selected?
         - can I undo? - does it work?
-        - choose a different date - ok/cancel
-        - validations on the sum 
-            - negative/0/numbers with decimals?/very small/very large
-            - see if there are validations in regards to a total sum available - can I define how much I have in an account? can I transfer more then I have in it?
+    - :one: choose a different date - ok/cancel
+    - :one: validations on the sum 
+        - negative/0/numbers with decimals?/very small/very large
+        - see if there are validations in regards to a total sum available - can I define how much I have in an account? can I transfer more then I have in it?
         
 - Hamburger menu item - opens a menu:
   - :one: is it easy to navigate between the menu items?
@@ -161,38 +161,38 @@ There is a calculator embedded when inputting numbers - does it work correctly?
         - :two: can I undo?
         - :three: can I delete all?
     - Income
-        - add new - the same as for expenses
-        - edit existing - the same as for expenses
+        - :one: add new - the same as for expenses
+        - :two: edit existing - the same as for expenses
   - Accounts
     - Transfer 
-      - is it the same transfer screen as from the menu? is the functionality consistent with that one?
+      - :one: is it the same transfer screen as from the menu? is the functionality consistent with that one?
     - Add account 
-      - try some previously mentioned test ideas for the account name input field
-      - set currency - paid feature
+      - :one: try some previously mentioned test ideas for the account name input field
+      - :one: set currency - paid feature
         - set a different currency than the existing accounts - how are the calculations combined? what does the chart show?
         - exchange rate - find out what it does - do you set an exchange rate you want to be made, and the app shows you the data in only one currency?
-      - initial account balance 
+      - :one: initial account balance 
         - set 0/a moderate amount/ a very big one/ with decimals/ can it be negative?
       - initial balance date - how does this value reflect in the application?
-        - set in the future 
+        - :two: set in the future 
           - how do transactions from this account for today look like? 
           - set initial account balance an amount larger than 0, set a starting date from next month - creating a transfer from this account to another - what will the balance look like?
-                - included in the balance flag - see its impact in the Balance screen - check if it's included, and if the calculations reflect the set amount
-    - edit and delete - look at consequences
-- Currencies - paid only
+      - :one: included in the balance flag - see its impact in the Balance screen - check if it's included, and if the calculations reflect the set amount
+    - :one: Edit and delete - look at consequences
+  - Currencies - paid only
     - is this the same curencies feature as in the Accounts? 
-- Settings
-    - passcode protection feature 
+  - Settings
+    - :two: passcode protection feature 
         - paid only
         - need to provide passcode when using app? when exactly is the passcode required? 
         - get app to background without closing it - see if passcode is required when accessing app
         - does the passcode propagate on other synced devices?
-    - review app - is it easy to leave a review - can help with marketing
-    - Export to file
+    - :three: review app - is it easy to leave a review - can help with marketing
+    - :three: Export to file
         - see if I can export to csv with default delimiter and decimal separator
         - vary chars for delimiter and separator
         - does the .csv contain accurate data?
-    - Dropbox sync 
+    - :one: Dropbox sync 
         - set up a Dropbox account
         - sync changes on multiple devices 
         - make changes in a sequence or in parallel - it seems realistic to consider 2 people using the same account, from the claim in the Synchronization feature description
@@ -200,14 +200,49 @@ There is a calculator embedded when inputting numbers - does it work correctly?
             - create from one device - update from the other - check consequences on the first device
             - changes at the expense/income level, at the Categories level, at the Accounts level 
         - change the Dropbox account set initially
-    - Create backup 
+    - :one: Create backup 
         - for a small amount of data
         - for quite some data - how much would a user add in a month? what about a year?
         - is the backup created?
-    - Restore data
+    - :one: Restore data
         - can backups created for the previous feature be restored?
         - what if I have more backups? 
             - is the one I choose restored?
-    - Clear data
+    - :two: Clear data
         - does it get deleted on all synced devices?
-        - is this compliant to the EU GDPR norms?
+        - is this compliant to the EU GDPR norms
+        
+### Charter: Explore flows through the app to test realistic use
+---
+
+- :one: test the download and install flow in different conditions, with interrupts: internet connection, software update, device shutdown(empty battery/restart), calls, SMSes, other apps opened
+- :one: adding data - e.g. expense/transfer - are the fields consistent with other apps on the same platform(iOS), and can they be used in the same way? 
+    - keyboard keys like return, delete, special characters, letters from non-english alphabets, emojis 
+    - select/copy/paste
+    - Back/Cancel buttons placement
+- :one: buying the app 
+    - is it easy/straightforward to purchase the app?
+    - are the promised features present right away?
+    - do the free features still work as before or consistently?
+    - am I charged the claimed amount? - identify which are features of the App Store, and which are on our side
+    - Restore the app - see if this works as for other apps on Apple devices
+- :three: going from the paid version to the free one again - is it possible? - it says "unlimited use"
+- :two: long term use - in relation to device resource usage 
+
+
+### Other aspects to explore further
+---
+
+- :one:/:three: ads - I didn't see any in the app - find out when/how they are shown, if it blocks users from doing anything (These can have high or low priority, depending on the business model we have - do we rely on ads more for revenue, or on app purchases?)
+
+- :two: focus on features which were changed recently, and around them - higher probability of bugs
+    - current version:  Version 1.1.4
+    - version history 
+        - latest release 19 March 2018 - Synchronization improvements
+        - release 13 March 2018:
+            - 1. Pie chart became even more interactive - now you can see all your records for a category in one tap!
+            - 2. Improved onboarding experience
+
+- :two: How scalable do we want the app to be? - can we handle a big users number increase?
+
+
