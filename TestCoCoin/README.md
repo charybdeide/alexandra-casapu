@@ -35,27 +35,27 @@ Priority assignment:
 - :one: does the app open? - if it doesn't open at all, or crashes on open, that's bad
 - :one: important flows:
 
-set password: 
-swipe 4 times 
-insert password
-insert it again
-wait for app screen to load
-- check that elements from the expenses insert screen are displayed
-- check that the correct activity is displayed
+*set password:*  
+swipe 4 times   
+insert password  
+insert it again  
+wait for app screen to load  
+-> check that elements from the expenses insert screen are displayed
+-> check that the correct activity is displayed
 
-insert expenses:
-insert amount
-choose category
-press on checkmark
-- check that money field was reset to 0
+*insert expenses:*    
+insert amount    
+choose category    
+press on checkmark  
+-> check that money field was reset to 0
 
-check that expenses are inserted:
-insert data
-click on hamburger menu item
-insert code
-- correct activity displayed
-- total amount displayed
-- each amount displayed with correct corresponding category?
+*check that expenses are inserted:*  
+insert data  
+click on hamburger menu item  
+insert code  
+-> correct activity displayed
+-> total amount displayed
+-> each amount displayed with correct corresponding category?
 
 #### Pros for automating on the UI level:
 We can do these on the UI level, to simulate closely the user's context. 
