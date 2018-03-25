@@ -53,9 +53,9 @@ press on checkmark
 insert data  
 click on hamburger menu item  
 insert code  
--> correct activity displayed
--> total amount displayed
--> each amount displayed with correct corresponding category?
+-> correct activity displayed  
+-> total amount displayed   
+-> each amount displayed with correct corresponding category?  
 
 #### Pros for automating on the UI level:
 We can do these on the UI level, to simulate closely the user's context. 
