@@ -3,7 +3,6 @@
 const assert = require('assert');
 const app = require('../../../src/app');
 var request = require('supertest');
-// var productSchema = require('../../../src/services/products/schema');
 
 describe('products update', function () {
   beforeEach(function (done) {
@@ -69,7 +68,6 @@ describe('products update', function () {
           .patch('/products/' + id)
           .expect(400)
           .end(function (err, result) {
-            console.log(result);
             if (err) { assert.ifError(err); }
             done();
           });
