@@ -1,21 +1,22 @@
 package ro.ale.com;
 
+import io.appium.java_client.MobileElement;
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.concurrent.TimeUnit;
 
 public class CoCoinTests {
 
     AndroidDriver driver;
 
-    @BeforeClass
+    @BeforeSuite
     void getDriver() throws MalformedURLException {
 
         File appPath = new File("CoCoin.apk");
@@ -28,16 +29,64 @@ public class CoCoinTests {
         capabilities.setCapability("appWaitActivity", "com.nightonke.saver.activity.ShowActivity");
 
         driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+
     }
 
-    @AfterClass
+    @BeforeMethod
+    void restartApp() {
+        driver.resetApp();
+    }
+
+    @AfterSuite
     void tearDown() {
         driver.quit();
     }
 
+    void swipe(int startX, int startY, int endX, int endY, int durationMilis) {
+        TouchAction touchAction = new TouchAction(driver);
+        touchAction.press(startX, startY).waitAction(durationMilis).moveTo(endX, endY).release().perform();
+    }
+
     @Test
-    void appFirstScreenIsDisplayed() {
+    void checkAppFirstScreenIsDisplayed() {
         DriverActivity activity = new DriverActivity();
         Assert.assertTrue(activity.checkCurrentActivity(driver, "com.nightonke.saver.activity.ShowActivity"));
     }
+
+    @Test
+    void setPassword() throws InterruptedException {
+        MobileElement firstTab = (MobileElement) driver.findElementByClassName("android.support.v4.view.ViewPager");
+        int startX = firstTab.getSize().width - 5;
+        int startY = firstTab.getSize().height/12;
+        int endX = 5;
+        int endY = startY;
+
+        for(int i = 0; i < 4; i++)
+        {
+            swipe(startX, startY, endX, endY, 500);
+        }
+
+        MobileElement oneKey = (MobileElement) driver.findElementById("com.nightonke.cocoin:id/textview");
+        for(int i = 0; i < 4; i++)
+        {
+            oneKey.click();
+        }
+
+        MobileElement passwordTip = (MobileElement) driver.findElementById("com.nightonke.cocoin:id/password_tip");
+        Assert.assertTrue(passwordTip.isDisplayed());
+        MobileElement oneKeyConfirmation = (MobileElement) driver.findElementById("com.nightonke.cocoin:id/textview");
+        for(int i = 0; i < 4; i++)
+        {
+            oneKeyConfirmation.click();
+        }
+
+        MobileElement hamburgerMenu = (MobileElement) driver.findElementById("com.nightonke.cocoin:id/toolbar");
+        Assert.assertTrue(hamburgerMenu.isDisplayed());
+        DriverActivity activity = new DriverActivity();
+        Assert.assertTrue(activity.checkCurrentActivity(driver, "com.nightonke.saver.activity.MainActivity"));
+
+    }
+
+
 }
