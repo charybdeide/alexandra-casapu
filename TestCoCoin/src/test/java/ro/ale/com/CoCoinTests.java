@@ -10,6 +10,7 @@ import org.testng.annotations.*;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class CoCoinTests {
@@ -60,31 +61,51 @@ public class CoCoinTests {
         }
     }
 
-    
     @Test
-    void checkAppFirstScreenIsDisplayed() {
+    void appFirstScreenIsDisplayed() {
         DriverActivity activity = new DriverActivity();
         Assert.assertTrue(activity.checkCurrentActivity(driver, "com.nightonke.saver.activity.ShowActivity"));
     }
 
     @Test
-    void setPassword() {
+    void canSetPassword() {
+        AppKeyboard keyboard = new AppKeyboard();
+        DriverActivity activity = new DriverActivity();
+
         swipeThroughInitialTabs();
 
-        AppKeyboard keyboard = new AppKeyboard();
-        keyboard.insertPassword(driver, "com.nightonke.cocoin:id/textview");
+        keyboard.insertPassword("com.nightonke.cocoin:id/textview");
 
         MobileElement passwordTip = (MobileElement) driver.findElementById("com.nightonke.cocoin:id/password_tip");
         Assert.assertTrue(passwordTip.isDisplayed());
 
-        keyboard.insertPassword(driver, "com.nightonke.cocoin:id/textview");
+        keyboard.insertPassword("com.nightonke.cocoin:id/textview");
 
         MobileElement hamburgerMenu = (MobileElement) driver.findElementById("com.nightonke.cocoin:id/content_hamburger");
         Assert.assertTrue(hamburgerMenu.isDisplayed());
-        DriverActivity activity = new DriverActivity();
         Assert.assertTrue(activity.checkCurrentActivity(driver, "com.nightonke.saver.activity.MainActivity"));
-
     }
 
+    @Test
+    void canInsertExpense() {
+        AppKeyboard keyboard = new AppKeyboard(driver);
+
+        swipeThroughInitialTabs();
+        keyboard.insertPassword("com.nightonke.cocoin:id/textview");
+        MobileElement passwordTip = (MobileElement) driver.findElementById("com.nightonke.cocoin:id/password_tip");
+        keyboard.insertPassword("com.nightonke.cocoin:id/textview");
+        MobileElement hamburgerMenu = (MobileElement) driver.findElementById("com.nightonke.cocoin:id/content_hamburger");
+
+        keyboard.clickOnKeyWithValue("2");
+        keyboard.clickOnKeyWithValue("3");
+        Assert.assertEquals(driver.findElementById("com.nightonke.cocoin:id/money").getText(), "23");
+
+        driver.findElementByXPath("//android.widget.GridView/android.widget.LinearLayout[1]").click();
+        List<MobileElement> icons = (List<MobileElement>) driver.findElementsById("com.nightonke.cocoin:id/icon");
+        icons.get(1).click();
+
+        Assert.assertEquals(driver.findElementById("com.nightonke.cocoin:id/money").getText(), "0");
+
+    }
 
 }
