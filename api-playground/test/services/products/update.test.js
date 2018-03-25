@@ -47,4 +47,33 @@ describe('products update', function () {
           });
       });
   });
+
+  it('does not allow updating a product with empty body', function(done) {
+    request(app)
+      .post('/products')
+      .send({
+        name: 'Test Product Update with empty body',
+        description: 'This is a test product',
+        upc: '12345',
+        type: 'Electronics',
+        model: 'Product0123'
+      })
+      .expect(201)
+      .end(function (err, result) {
+        if (err) { assert.ifError(err); }
+        var id = result.body.id;
+
+        assert.ok(id);
+
+        request(app)
+          .patch('/products/' + id)
+          .expect(400)
+          .end(function (err, result) {
+            console.log(result);
+            if (err) { assert.ifError(err); }
+            done();
+          });
+      });
+  });
+
 });
