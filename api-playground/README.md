@@ -1,5 +1,24 @@
 # Best Buy API Playground
 
+### What I changed
+
+I added these tests:
+
+products update
+- sucessfully updates the name of an existing product  
+- does not allow updating a product with empty body - seems like it's failing - not implemented according to the swagger docs 
+
+products deletion
+- sucessfully deletes an existing product  
+- gives an error when product does not exist
+
+These tests were added in the existing test suite, so you can run them as you run tests for the rest of the project, with 
+```
+npm test
+```
+
+
+
 [![travis][travis-image]][travis-url]
 [![Coverage Status][coveralls-image]][coveralls-url]
 [![semistandard][semistandard-image]][semistandard-url]
