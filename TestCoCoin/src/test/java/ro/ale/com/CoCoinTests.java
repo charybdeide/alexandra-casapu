@@ -30,7 +30,6 @@ public class CoCoinTests {
 
         driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-
     }
 
     @BeforeMethod
@@ -48,14 +47,7 @@ public class CoCoinTests {
         touchAction.press(startX, startY).waitAction(durationMilis).moveTo(endX, endY).release().perform();
     }
 
-    @Test
-    void checkAppFirstScreenIsDisplayed() {
-        DriverActivity activity = new DriverActivity();
-        Assert.assertTrue(activity.checkCurrentActivity(driver, "com.nightonke.saver.activity.ShowActivity"));
-    }
-
-    @Test
-    void setPassword() throws InterruptedException {
+    void swipeThroughInitialTabs() {
         MobileElement firstTab = (MobileElement) driver.findElementByClassName("android.support.v4.view.ViewPager");
         int startX = firstTab.getSize().width - 5;
         int startY = firstTab.getSize().height/12;
@@ -66,22 +58,28 @@ public class CoCoinTests {
         {
             swipe(startX, startY, endX, endY, 500);
         }
+    }
 
-        MobileElement oneKey = (MobileElement) driver.findElementById("com.nightonke.cocoin:id/textview");
-        for(int i = 0; i < 4; i++)
-        {
-            oneKey.click();
-        }
+    
+    @Test
+    void checkAppFirstScreenIsDisplayed() {
+        DriverActivity activity = new DriverActivity();
+        Assert.assertTrue(activity.checkCurrentActivity(driver, "com.nightonke.saver.activity.ShowActivity"));
+    }
+
+    @Test
+    void setPassword() {
+        swipeThroughInitialTabs();
+
+        AppKeyboard keyboard = new AppKeyboard();
+        keyboard.insertPassword(driver, "com.nightonke.cocoin:id/textview");
 
         MobileElement passwordTip = (MobileElement) driver.findElementById("com.nightonke.cocoin:id/password_tip");
         Assert.assertTrue(passwordTip.isDisplayed());
-        MobileElement oneKeyConfirmation = (MobileElement) driver.findElementById("com.nightonke.cocoin:id/textview");
-        for(int i = 0; i < 4; i++)
-        {
-            oneKeyConfirmation.click();
-        }
 
-        MobileElement hamburgerMenu = (MobileElement) driver.findElementById("com.nightonke.cocoin:id/toolbar");
+        keyboard.insertPassword(driver, "com.nightonke.cocoin:id/textview");
+
+        MobileElement hamburgerMenu = (MobileElement) driver.findElementById("com.nightonke.cocoin:id/content_hamburger");
         Assert.assertTrue(hamburgerMenu.isDisplayed());
         DriverActivity activity = new DriverActivity();
         Assert.assertTrue(activity.checkCurrentActivity(driver, "com.nightonke.saver.activity.MainActivity"));
