@@ -61,15 +61,15 @@ public class CoCoinTests {
         }
     }
 
-    @Test
+    @Test(priority=1)
     void appFirstScreenIsDisplayed() {
         DriverActivity activity = new DriverActivity();
         Assert.assertTrue(activity.checkCurrentActivity(driver, "com.nightonke.saver.activity.ShowActivity"));
     }
 
-    @Test
+    @Test(priority=2)
     void canSetPassword() {
-        AppKeyboard keyboard = new AppKeyboard();
+        AppKeyboard keyboard = new AppKeyboard(driver);
         DriverActivity activity = new DriverActivity();
 
         swipeThroughInitialTabs();
@@ -86,7 +86,7 @@ public class CoCoinTests {
         Assert.assertTrue(activity.checkCurrentActivity(driver, "com.nightonke.saver.activity.MainActivity"));
     }
 
-    @Test
+    @Test(priority=3)
     void canInsertExpense() {
         AppKeyboard keyboard = new AppKeyboard(driver);
 
@@ -103,6 +103,17 @@ public class CoCoinTests {
         driver.findElementByXPath("//android.widget.GridView/android.widget.LinearLayout[1]").click();
         List<MobileElement> icons = (List<MobileElement>) driver.findElementsById("com.nightonke.cocoin:id/icon");
         icons.get(1).click();
+
+        long startingTime = System.currentTimeMillis();
+        long currentTime = System.currentTimeMillis();
+        while(currentTime - startingTime < 3000)
+        {
+            if(driver.findElementsById("com.nightonke.cocoin:id/tag_image").size() == 8)
+            {
+                break;
+            }
+            currentTime = System.currentTimeMillis();
+        }
 
         Assert.assertEquals(driver.findElementById("com.nightonke.cocoin:id/money").getText(), "0");
 
