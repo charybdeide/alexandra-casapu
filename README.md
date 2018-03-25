@@ -3,7 +3,7 @@
 # Monefy Test Plan
 
 ## *Context*: 
-I'm assuming I've joined the team and was asked to test the app to find possible problems with big business impact.
+I'm assuming I've joined the team and was asked to test the app to find possible problems with big business impact.  
 Product website: http://www.monefy.me/
 
 
