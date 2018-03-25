@@ -22,3 +22,8 @@ dependencies {
     compile 'com.testdroid:testdroid-api:2.9'
     compile 'com.google.http-client:google-http-client-jackson2:1.21.0'
 }
+
+test {
+    // enable TestNG support (default is JUnit)
+    useTestNG()
+}

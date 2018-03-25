@@ -1,9 +1,8 @@
 package ro.ale.com;
 
-import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.service.local.AppiumDriverLocalService;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -14,13 +13,10 @@ import java.net.URL;
 
 public class CoCoinTests {
 
-    AppiumDriver driver;
-
-
+    AndroidDriver driver;
 
     @BeforeClass
     void getDriver() throws MalformedURLException {
-
 
         File appPath = new File("CoCoin.apk");
 
@@ -29,17 +25,19 @@ public class CoCoinTests {
         capabilities.setCapability("platformName","Android");
         capabilities.setCapability("automationName", "UiAutomator2");
         capabilities.setCapability("deviceName", "emulator-5554");
-        capabilities.setCapability("appWaitActivity", "com.nightonke.saver.activity.MainActivity");
+        capabilities.setCapability("appWaitActivity", "com.nightonke.saver.activity.ShowActivity");
 
         driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
     }
 
     @AfterClass
     void tearDown() {
+        driver.quit();
     }
 
     @Test
-    void sampleTest() {
-
+    void appFirstScreenIsDisplayed() {
+        DriverActivity activity = new DriverActivity();
+        Assert.assertTrue(activity.checkCurrentActivity(driver, "com.nightonke.saver.activity.ShowActivity"));
     }
 }
