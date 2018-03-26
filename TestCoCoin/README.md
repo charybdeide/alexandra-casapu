@@ -10,7 +10,16 @@
 - you can check out the resulting report in build\reports\tests\test
 
 
-Note: I will only be automating some example test cases on the UI level. I made this choice because I only got the .apk of the app, not the link to the github repo, so I'm inferring that lower level tests are out of scope.
+### Short explanation of the solution
+
+I will only be automating some example test cases on the UI level. I made this choice because I only got the .apk of the app, not the link to the github repo, so I'm inferring that lower level tests are out of scope.
+
+My approach was to start with the smoke tests, to learn more about how to interact with the application, the main flows, and also to implement building blocks that can be used further in other tests.
+
+The next steps I would make would be to extract the selectors in separate files according to a model that makes sense for the app - e.g. on pages, also maybe some common elements would be separate, like the calculator.
+
+I would also implement next the test to check that expenses are actually inserted. I thought I'd use a data provider to insert more expenses, and then check the output in the reports. This would be a good opportunity to extract more methods in a way that would allow me to not duplicate code.
+
 
 ### Prioritization criteria in terms of business impact:
 - Flows type: main/secondary flows
