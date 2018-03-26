@@ -7,7 +7,7 @@ I'm assuming I've joined the team and was asked to test the app to find possible
 Product website: http://www.monefy.me/
 
 
-## *My mission*: Make a plan for testing Monefy while prioritizing according to business impact
+## *My mission*: Test Monefy in a way that uncovers risks with high business impact
 
 ## *Strategy*:
 
