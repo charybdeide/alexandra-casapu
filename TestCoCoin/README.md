@@ -10,7 +10,7 @@
 - you can check out the resulting report in build\reports\tests\test
 
 
-### Short explanation of the solution
+### Short explanation of my solution
 
 I will only be automating some example test cases on the UI level. I made this choice because I only got the .apk of the app, not the link to the github repo, so I'm inferring that lower level tests are out of scope.
 
