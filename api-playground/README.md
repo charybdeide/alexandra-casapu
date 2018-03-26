@@ -17,6 +17,14 @@ These tests were added in the existing test suite, so you can run them as you ru
 npm test
 ```
 
+### Short explanation of my solution
+
+I did the setup and when I ran the tests I realized this api already has many relevant tests.  
+So I first checked out the code coverage report, to see if there are areas less covered. I saw that the main components like the products, categories, etc were quite well covered. Then I went through the tests for products and analyzed what request types and situations they covered, and tried to compe up with cases that were not covered by the existing tests.
+
+It made most sense to add them along the existing tests, since it would be easy to follow what was covered.
+
+
 
 
 [![travis][travis-image]][travis-url]
