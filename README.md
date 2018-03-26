@@ -7,7 +7,7 @@ I'm assuming I've joined the team and was asked to test the app to find possible
 Product website: http://www.monefy.me/
 
 
-## *My mission*: Test Monefy as a QA Engineer
+## *My mission*: Make a plan for testing Monefy while prioritizing according to business impact
 
 ## *Strategy*:
 
